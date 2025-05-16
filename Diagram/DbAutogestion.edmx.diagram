@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="021bf354e36d426d803f56205b3d8996" Name="Diagram1" ZoomLevel="79" >
+        <EntityTypeShape EntityType="Model1.Form" Width="1.5" PointX="13" PointY="3" />
+        <EntityTypeShape EntityType="Model1.FormModule" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.Module" Width="1.5" PointX="13" PointY="24" />
+        <EntityTypeShape EntityType="Model1.RolFormPermission" Width="1.5" PointX="17" PointY="5.5" />
+        <EntityTypeShape EntityType="Model1.Rol" Width="1.5" PointX="13" PointY="7.75" />
+        <EntityTypeShape EntityType="Model1.UserRol" Width="1.5" PointX="8.25" PointY="10.25" />
+        <EntityTypeShape EntityType="Model1.Person" Width="1.5" PointX="12.75" PointY="14" />
+        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="10.5" PointY="14.5" />
+        <EntityTypeShape EntityType="Model1.UserSede" Width="1.5" PointX="15.75" PointY="15.125" />
+        <EntityTypeShape EntityType="Model1.Sede" Width="1.5" PointX="13.5" PointY="19.25" />
+        <EntityTypeShape EntityType="Model1.Center" Width="1.5" PointX="11.25" PointY="19.5" />
+        <EntityTypeShape EntityType="Model1.Regional" Width="1.5" PointX="9" PointY="19.875" />
+        <EntityTypeShape EntityType="Model1.Aprendiz" Width="1.5" PointX="8.25" PointY="16.375" />
+        <EntityTypeShape EntityType="Model1.AprendizProgram" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="Model1.Instructor" Width="1.5" PointX="8.25" PointY="13.5" />
+        <EntityTypeShape EntityType="Model1.TypeModality" Width="1.5" PointX="5.25" PointY="13.375" />
+        <EntityTypeShape EntityType="Model1.Enterprise" Width="1.5" PointX="5.25" PointY="22.875" />
+        <EntityTypeShape EntityType="Model1.Process" Width="1.5" PointX="0.75" PointY="16.125" />
+        <EntityTypeShape EntityType="Model1.AprendizProcessInstructor" Width="1.5" PointX="3" PointY="16" />
+        <EntityTypeShape EntityType="Model1.State" Width="1.5" PointX="5.25" PointY="27" />
+        <EntityTypeShape EntityType="Model1.InstructorProgram" Width="1.5" PointX="6" PointY="10.625" />
+        <EntityTypeShape EntityType="Model1.Program" Width="1.5" PointX="8.25" PointY="5.375" />
+        <AssociationConnector Association="Model1.FormModuleForm" />
+        <AssociationConnector Association="Model1.RolFormForm" />
+        <AssociationConnector Association="Model1.FormModuleModule" />
+        <AssociationConnector Association="Model1.RolRolForm" />
+        <AssociationConnector Association="Model1.UsuarioRolRol" />
+        <AssociationConnector Association="Model1.UserRolUser" />
+        <AssociationConnector Association="Model1.UserPerson" />
+        <AssociationConnector Association="Model1.useruserSede" />
+        <AssociationConnector Association="Model1.Aprendizuser" />
+        <AssociationConnector Association="Model1.Instructoruser" />
+        <AssociationConnector Association="Model1.SedePersonSede" />
+        <AssociationConnector Association="Model1.CenterSede" />
+        <AssociationConnector Association="Model1.RegionalCenter" />
+        <AssociationConnector Association="Model1.AprendizProgramAprendiz" />
+        <AssociationConnector Association="Model1.AprendizProceesIntructorAprendiz" />
+        <AssociationConnector Association="Model1.AprendizProgramProgram" />
+        <AssociationConnector Association="Model1.AprendizProceesIntructorInstructor" />
+        <AssociationConnector Association="Model1.AprendizProceesIntructorTypeModality" />
+        <AssociationConnector Association="Model1.AprendizProceesIntructorEnterprise" />
+        <AssociationConnector Association="Model1.ProcessAprendizProceesIntructor" />
+        <AssociationConnector Association="Model1.AprendizProceesIntructorstate" />
+        <AssociationConnector Association="Model1.instructor_programInstructor" />
+        <AssociationConnector Association="Model1.instructor_programProgram" />
+        <EntityTypeShape EntityType="Model1.change_log" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.Permission" Width="1.5" PointX="16.75" PointY="11.625" />
+        <AssociationConnector Association="Model1.RolFormPermissionPermission" />
+        <EntityTypeShape EntityType="Model1.Boss" Width="1.5" PointX="9.25" PointY="24" />
+        <AssociationConnector Association="Model1.BossEnterprise" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FormSet" EntityType="Model1.Form" />
+          <EntitySet Name="FormModuleSet" EntityType="Model1.FormModule" />
+          <EntitySet Name="ModuleSet" EntityType="Model1.Module" />
+          <EntitySet Name="RolFormPermissionSet" EntityType="Model1.RolFormPermission" />
+          <EntitySet Name="RolSet" EntityType="Model1.Rol" />
+          <EntitySet Name="UserRolSet" EntityType="Model1.UserRol" />
+          <EntitySet Name="PersonSet1" EntityType="Model1.Person" />
+          <EntitySet Name="UserSet" EntityType="Model1.User" />
+          <EntitySet Name="UserSedeSet1" EntityType="Model1.UserSede" />
+          <EntitySet Name="SedeSet" EntityType="Model1.Sede" />
+          <EntitySet Name="CenterSet" EntityType="Model1.Center" />
+          <EntitySet Name="RegionalSet" EntityType="Model1.Regional" />
+          <EntitySet Name="AprendizSet1" EntityType="Model1.Aprendiz" />
+          <EntitySet Name="AprendizProgramSet" EntityType="Model1.AprendizProgram" />
+          <EntitySet Name="InstructorSet" EntityType="Model1.Instructor" />
+          <EntitySet Name="TypeModalitySet" EntityType="Model1.TypeModality" />
+          <EntitySet Name="EnterpriseSet" EntityType="Model1.Enterprise" />
+          <EntitySet Name="ProcessSet" EntityType="Model1.Process" />
+          <EntitySet Name="AprendizProcessInstructorSet" EntityType="Model1.AprendizProcessInstructor" />
+          <EntitySet Name="StateSet1" EntityType="Model1.State" />
+          <EntitySet Name="instructors_programs" EntityType="Model1.InstructorProgram" />
+          <EntitySet Name="ProgramSet" EntityType="Model1.Program" />
+          <AssociationSet Name="FormModuleForm" Association="Model1.FormModuleForm">
+            <End Role="FormModule" EntitySet="FormModuleSet" />
+            <End Role="Form" EntitySet="FormSet" />
+          </AssociationSet>
+          <AssociationSet Name="RolFormForm" Association="Model1.RolFormForm">
+            <End Role="RolForm" EntitySet="RolFormPermissionSet" />
+            <End Role="Form" EntitySet="FormSet" />
+          </AssociationSet>
+          <AssociationSet Name="FormModuleModule" Association="Model1.FormModuleModule">
+            <End Role="FormModule" EntitySet="FormModuleSet" />
+            <End Role="Module" EntitySet="ModuleSet" />
+          </AssociationSet>
+          <AssociationSet Name="RolRolForm" Association="Model1.RolRolForm">
+            <End Role="RolForm" EntitySet="RolFormPermissionSet" />
+            <End Role="Rol" EntitySet="RolSet" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioRolRol" Association="Model1.UsuarioRolRol">
+            <End Role="UserRol" EntitySet="UserRolSet" />
+            <End Role="Rol" EntitySet="RolSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserRolUser" Association="Model1.UserRolUser">
+            <End Role="UserRol" EntitySet="UserRolSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserPerson" Association="Model1.UserPerson">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Person" EntitySet="PersonSet1" />
+          </AssociationSet>
+          <AssociationSet Name="useruserSede" Association="Model1.useruserSede">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="UserSede" EntitySet="UserSedeSet1" />
+          </AssociationSet>
+          <AssociationSet Name="Aprendizuser" Association="Model1.Aprendizuser">
+            <End Role="Aprendiz" EntitySet="AprendizSet1" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="Instructoruser" Association="Model1.Instructoruser">
+            <End Role="Instructor" EntitySet="InstructorSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="SedePersonSede" Association="Model1.SedePersonSede">
+            <End Role="Sede" EntitySet="SedeSet" />
+            <End Role="UserSede" EntitySet="UserSedeSet1" />
+          </AssociationSet>
+          <AssociationSet Name="CenterSede" Association="Model1.CenterSede">
+            <End Role="Center" EntitySet="CenterSet" />
+            <End Role="Sede" EntitySet="SedeSet" />
+          </AssociationSet>
+          <AssociationSet Name="RegionalCenter" Association="Model1.RegionalCenter">
+            <End Role="Regional" EntitySet="RegionalSet" />
+            <End Role="Center" EntitySet="CenterSet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProgramAprendiz" Association="Model1.AprendizProgramAprendiz">
+            <End Role="AprendizProgram" EntitySet="AprendizProgramSet" />
+            <End Role="Aprendiz" EntitySet="AprendizSet1" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProceesIntructorAprendiz" Association="Model1.AprendizProceesIntructorAprendiz">
+            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
+            <End Role="Aprendiz" EntitySet="AprendizSet1" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProgramProgram" Association="Model1.AprendizProgramProgram">
+            <End Role="AprendizProgram" EntitySet="AprendizProgramSet" />
+            <End Role="Program" EntitySet="ProgramSet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProceesIntructorInstructor" Association="Model1.AprendizProceesIntructorInstructor">
+            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
+            <End Role="Instructor" EntitySet="InstructorSet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProceesIntructorTypeModality" Association="Model1.AprendizProceesIntructorTypeModality">
+            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
+            <End Role="TypeModality" EntitySet="TypeModalitySet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProceesIntructorEnterprise" Association="Model1.AprendizProceesIntructorEnterprise">
+            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
+            <End Role="Enterprise" EntitySet="EnterpriseSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProcessAprendizProceesIntructor" Association="Model1.ProcessAprendizProceesIntructor">
+            <End Role="Process" EntitySet="ProcessSet" />
+            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizProceesIntructorstate" Association="Model1.AprendizProceesIntructorstate">
+            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
+            <End Role="State" EntitySet="StateSet1" />
+          </AssociationSet>
+          <AssociationSet Name="instructor_programInstructor" Association="Model1.instructor_programInstructor">
+            <End Role="InstructorProgram" EntitySet="instructors_programs" />
+            <End Role="Instructor" EntitySet="InstructorSet" />
+          </AssociationSet>
+          <AssociationSet Name="instructor_programProgram" Association="Model1.instructor_programProgram">
+            <End Role="InstructorProgram" EntitySet="instructors_programs" />
+            <End Role="Program" EntitySet="ProgramSet" />
+          </AssociationSet>
+          <EntitySet Name="change_logs" EntityType="Model1.change_log" />
+          <EntitySet Name="PermissionSet" EntityType="Model1.Permission" />
+          <AssociationSet Name="RolFormPermissionPermission" Association="Model1.RolFormPermissionPermission">
+            <End Role="RolFormPermission" EntitySet="RolFormPermissionSet" />
+            <End Role="Permission" EntitySet="PermissionSet" />
+          </AssociationSet>
+          <EntitySet Name="BossSet" EntityType="Model1.Boss" />
+          <AssociationSet Name="BossEnterprise" Association="Model1.BossEnterprise">
+            <End Role="Boss" EntitySet="BossSet" />
+            <End Role="Enterprise" EntitySet="EnterpriseSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="FormModule" Relationship="Model1.FormModuleForm" FromRole="Form" ToRole="FormModule" />
+          <NavigationProperty Name="RolForm" Relationship="Model1.RolFormForm" FromRole="Form" ToRole="RolForm" />
+          <Property Name="Path" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormModule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="FormId" Relationship="Model1.FormModuleForm" FromRole="FormModule" ToRole="Form" />
+          <NavigationProperty Name="ModuleId" Relationship="Model1.FormModuleModule" FromRole="FormModule" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="FormModule" Relationship="Model1.FormModuleModule" FromRole="Module" ToRole="FormModule" />
+        </EntityType>
+        <EntityType Name="RolFormPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Permission" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FormId" Relationship="Model1.RolFormForm" FromRole="RolForm" ToRole="Form" />
+          <NavigationProperty Name="RolId" Relationship="Model1.RolRolForm" FromRole="RolForm" ToRole="Rol" />
+          <NavigationProperty Name="Permission1" Relationship="Model1.RolFormPermissionPermission" FromRole="RolFormPermission" ToRole="Permission" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeRol" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RolForm" Relationship="Model1.RolRolForm" FromRole="Rol" ToRole="RolForm" />
+          <NavigationProperty Name="UsuarioRol" Relationship="Model1.UsuarioRolRol" FromRole="Rol" ToRole="UserRol" />
+        </EntityType>
+        <EntityType Name="UserRol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RolId" Relationship="Model1.UsuarioRolRol" FromRole="UserRol" ToRole="Rol" />
+          <NavigationProperty Name="UserId" Relationship="Model1.UserRolUser" FromRole="UserRol" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="SecondName" Type="String" Nullable="false" />
+          <Property Name="FirstLastName" Type="String" Nullable="false" />
+          <Property Name="SecondLastName" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+          <Property Name="TypeIdentification" Type="String" Nullable="false" />
+          <Property Name="NumberIdentification" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserPerson" FromRole="Person" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="UserRol" Relationship="Model1.UserRolUser" FromRole="User" ToRole="UserRol" />
+          <NavigationProperty Name="PersonId" Relationship="Model1.UserPerson" FromRole="User" ToRole="Person" />
+          <NavigationProperty Name="UserSede" Relationship="Model1.useruserSede" FromRole="User" ToRole="UserSede" />
+          <NavigationProperty Name="Aprendiz" Relationship="Model1.Aprendizuser" FromRole="User" ToRole="Aprendiz" />
+          <NavigationProperty Name="Instructor" Relationship="Model1.Instructoruser" FromRole="User" ToRole="Instructor" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UserId" Relationship="Model1.useruserSede" FromRole="UserSede" ToRole="User" />
+          <NavigationProperty Name="SedeId" Relationship="Model1.SedePersonSede" FromRole="UserSede" ToRole="Sede" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CodeSede" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="PhoneSede" Type="Int16" Nullable="false" />
+          <Property Name="EmailContact" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="PersonSede" Relationship="Model1.SedePersonSede" FromRole="Sede" ToRole="UserSede" />
+          <NavigationProperty Name="CenterId" Relationship="Model1.CenterSede" FromRole="Sede" ToRole="Center" />
+        </EntityType>
+        <EntityType Name="Center">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CodeCenter" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sede" Relationship="Model1.CenterSede" FromRole="Center" ToRole="Sede" />
+          <NavigationProperty Name="RegionalId" Relationship="Model1.RegionalCenter" FromRole="Center" ToRole="Regional" />
+        </EntityType>
+        <EntityType Name="Regional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CodeRegional" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Center" Relationship="Model1.RegionalCenter" FromRole="Regional" ToRole="Center" />
+        </EntityType>
+        <EntityType Name="Aprendiz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PreviousProgram" Type="String" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.Aprendizuser" FromRole="Aprendiz" ToRole="User" />
+          <NavigationProperty Name="AprendizProgram" Relationship="Model1.AprendizProgramAprendiz" FromRole="Aprendiz" ToRole="AprendizProgram" />
+          <NavigationProperty Name="AprendizProcessIntructor" Relationship="Model1.AprendizProceesIntructorAprendiz" FromRole="Aprendiz" ToRole="AprendizProcessInstructor" />
+        </EntityType>
+        <EntityType Name="AprendizProgram">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AprendizId" Relationship="Model1.AprendizProgramAprendiz" FromRole="AprendizProgram" ToRole="Aprendiz" />
+          <NavigationProperty Name="ProgramId" Relationship="Model1.AprendizProgramProgram" FromRole="AprendizProgram" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserId" Relationship="Model1.Instructoruser" FromRole="Instructor" ToRole="User" />
+          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorInstructor" FromRole="Instructor" ToRole="AprendizProcessInstructor" />
+          <NavigationProperty Name="InstructorProgram" Relationship="Model1.instructor_programInstructor" FromRole="Instructor" ToRole="InstructorProgram" />
+        </EntityType>
+        <EntityType Name="TypeModality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorTypeModality" FromRole="TypeModality" ToRole="AprendizProcessInstructor" />
+        </EntityType>
+        <EntityType Name="Enterprise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Observation" Type="String" Nullable="false" />
+          <Property Name="NameEnterprise" Type="String" Nullable="false" />
+          <Property Name="PhoneEnterprise" Type="Int16" Nullable="false" />
+          <Property Name="Locate" Type="String" Nullable="false" />
+          <Property Name="NitEnterprise" Type="Int16" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="EmailEnterprise" Type="String" Nullable="false" />
+          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorEnterprise" FromRole="Enterprise" ToRole="AprendizProcessInstructor" />
+          <NavigationProperty Name="BossId" Relationship="Model1.BossEnterprise" FromRole="Enterprise" ToRole="Boss" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeProcess" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="StartAprendiz" Type="DateTime" Nullable="false" />
+          <Property Name="Observation" Type="String" Nullable="false" />
+          <NavigationProperty Name="AprendizProceesIntructor" Relationship="Model1.ProcessAprendizProceesIntructor" FromRole="Process" ToRole="AprendizProcessInstructor" />
+        </EntityType>
+        <EntityType Name="AprendizProcessInstructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AprendizId" Relationship="Model1.AprendizProceesIntructorAprendiz" FromRole="AprendizProcessInstructor" ToRole="Aprendiz" />
+          <NavigationProperty Name="InstructorId" Relationship="Model1.AprendizProceesIntructorInstructor" FromRole="AprendizProcessInstructor" ToRole="Instructor" />
+          <NavigationProperty Name="TypeModalityId" Relationship="Model1.AprendizProceesIntructorTypeModality" FromRole="AprendizProcessInstructor" ToRole="TypeModality" />
+          <NavigationProperty Name="EnterpriseId" Relationship="Model1.AprendizProceesIntructorEnterprise" FromRole="AprendizProcessInstructor" ToRole="Enterprise" />
+          <NavigationProperty Name="ProcessId" Relationship="Model1.ProcessAprendizProceesIntructor" FromRole="AprendizProcessInstructor" ToRole="Process" />
+          <NavigationProperty Name="StateId" Relationship="Model1.AprendizProceesIntructorstate" FromRole="AprendizProcessInstructor" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="TypeState" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorstate" FromRole="State" ToRole="AprendizProcessInstructor" />
+        </EntityType>
+        <EntityType Name="InstructorProgram">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="InstructorId" Relationship="Model1.instructor_programInstructor" FromRole="InstructorProgram" ToRole="Instructor" />
+          <NavigationProperty Name="ProgramId" Relationship="Model1.instructor_programProgram" FromRole="InstructorProgram" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeProgram" Type="Decimal" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="TypeProgram" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="AprendizProgram" Relationship="Model1.AprendizProgramProgram" FromRole="Program" ToRole="AprendizProgram" />
+          <NavigationProperty Name="InstructorProgram" Relationship="Model1.instructor_programProgram" FromRole="Program" ToRole="InstructorProgram" />
+        </EntityType>
+        <Association Name="FormModuleForm">
+          <End Type="Model1.FormModule" Role="FormModule" Multiplicity="*" />
+          <End Type="Model1.Form" Role="Form" Multiplicity="1" />
+        </Association>
+        <Association Name="RolFormForm">
+          <End Type="Model1.RolFormPermission" Role="RolForm" Multiplicity="*" />
+          <End Type="Model1.Form" Role="Form" Multiplicity="1" />
+        </Association>
+        <Association Name="FormModuleModule">
+          <End Type="Model1.FormModule" Role="FormModule" Multiplicity="*" />
+          <End Type="Model1.Module" Role="Module" Multiplicity="1" />
+        </Association>
+        <Association Name="RolRolForm">
+          <End Type="Model1.RolFormPermission" Role="RolForm" Multiplicity="*" />
+          <End Type="Model1.Rol" Role="Rol" Multiplicity="1" />
+        </Association>
+        <Association Name="UsuarioRolRol">
+          <End Type="Model1.UserRol" Role="UserRol" Multiplicity="*" />
+          <End Type="Model1.Rol" Role="Rol" Multiplicity="1" />
+        </Association>
+        <Association Name="UserRolUser">
+          <End Type="Model1.UserRol" Role="UserRol" Multiplicity="*" />
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="UserPerson">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+        </Association>
+        <Association Name="useruserSede">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.UserSede" Role="UserSede" Multiplicity="*" />
+        </Association>
+        <Association Name="Aprendizuser">
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="Instructoruser">
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="SedePersonSede">
+          <End Type="Model1.Sede" Role="Sede" Multiplicity="1" />
+          <End Type="Model1.UserSede" Role="UserSede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSede">
+              <PropertyRef Name="StatusProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CenterSede">
+          <End Type="Model1.Center" Role="Center" Multiplicity="1" />
+          <End Type="Model1.Sede" Role="Sede" Multiplicity="*" />
+        </Association>
+        <Association Name="RegionalCenter">
+          <End Type="Model1.Regional" Role="Regional" Multiplicity="1" />
+          <End Type="Model1.Center" Role="Center" Multiplicity="*" />
+        </Association>
+        <Association Name="AprendizProgramAprendiz">
+          <End Type="Model1.AprendizProgram" Role="AprendizProgram" Multiplicity="*" />
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
+        </Association>
+        <Association Name="AprendizProceesIntructorAprendiz">
+          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
+        </Association>
+        <Association Name="AprendizProgramProgram">
+          <End Type="Model1.AprendizProgram" Role="AprendizProgram" Multiplicity="*" />
+          <End Type="Model1.Program" Role="Program" Multiplicity="1" />
+        </Association>
+        <Association Name="AprendizProceesIntructorInstructor">
+          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+        </Association>
+        <Association Name="AprendizProceesIntructorTypeModality">
+          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
+          <End Type="Model1.TypeModality" Role="TypeModality" Multiplicity="1" />
+        </Association>
+        <Association Name="AprendizProceesIntructorEnterprise">
+          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
+          <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
+        </Association>
+        <Association Name="ProcessAprendizProceesIntructor">
+          <End Type="Model1.Process" Role="Process" Multiplicity="1" />
+          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
+        </Association>
+        <Association Name="AprendizProceesIntructorstate">
+          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
+          <End Type="Model1.State" Role="State" Multiplicity="1" />
+        </Association>
+        <Association Name="instructor_programInstructor">
+          <End Type="Model1.InstructorProgram" Role="InstructorProgram" Multiplicity="*" />
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+        </Association>
+        <Association Name="instructor_programProgram">
+          <End Type="Model1.InstructorProgram" Role="InstructorProgram" Multiplicity="*" />
+          <End Type="Model1.Program" Role="Program" Multiplicity="1" />
+        </Association>
+        <EntityType Name="change_log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" Nullable="false" />
+          <Property Name="IdTable" Type="Int16" Nullable="false" />
+          <Property Name="Action" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="CreateAt" Type="DateTime" Nullable="false" />
+          <Property Name="Registro" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypePermission" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="RolFormPermission" Relationship="Model1.RolFormPermissionPermission" FromRole="Permission" ToRole="RolFormPermission" />
+        </EntityType>
+        <Association Name="RolFormPermissionPermission">
+          <End Type="Model1.RolFormPermission" Role="RolFormPermission" Multiplicity="*" />
+          <End Type="Model1.Permission" Role="Permission" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Boss">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameBoss" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+          <Property Name="EmailBoss" Type="String" Nullable="false" />
+          <NavigationProperty Name="EnterpriseId" Relationship="Model1.BossEnterprise" FromRole="Boss" ToRole="Enterprise" />
+        </EntityType>
+        <Association Name="BossEnterprise">
+          <End Type="Model1.Boss" Role="Boss" Multiplicity="1" />
+          <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
