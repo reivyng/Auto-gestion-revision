@@ -18,22 +18,13 @@
           <EntitySet Name="ModuleSet" EntityType="Model1.Module" />
           <EntitySet Name="RolFormPermissionSet" EntityType="Model1.RolFormPermission" />
           <EntitySet Name="RolSet" EntityType="Model1.Rol" />
-          <EntitySet Name="UserRolSet" EntityType="Model1.UserRol" />
           <EntitySet Name="PersonSet1" EntityType="Model1.Person" />
           <EntitySet Name="UserSet" EntityType="Model1.User" />
-          <EntitySet Name="UserSedeSet1" EntityType="Model1.UserSede" />
+          <EntitySet Name="PersonSedeSet" EntityType="Model1.PersonSede" />
           <EntitySet Name="SedeSet" EntityType="Model1.Sede" />
           <EntitySet Name="CenterSet" EntityType="Model1.Center" />
           <EntitySet Name="RegionalSet" EntityType="Model1.Regional" />
-          <EntitySet Name="AprendizSet1" EntityType="Model1.Aprendiz" />
-          <EntitySet Name="AprendizProgramSet" EntityType="Model1.AprendizProgram" />
-          <EntitySet Name="InstructorSet" EntityType="Model1.Instructor" />
-          <EntitySet Name="TypeModalitySet" EntityType="Model1.TypeModality" />
           <EntitySet Name="EnterpriseSet" EntityType="Model1.Enterprise" />
-          <EntitySet Name="ProcessSet" EntityType="Model1.Process" />
-          <EntitySet Name="AprendizProcessInstructorSet" EntityType="Model1.AprendizProcessInstructor" />
-          <EntitySet Name="StateSet1" EntityType="Model1.State" />
-          <EntitySet Name="instructors_programs" EntityType="Model1.InstructorProgram" />
           <EntitySet Name="ProgramSet" EntityType="Model1.Program" />
           <AssociationSet Name="FormModuleForm" Association="Model1.FormModuleForm">
             <End Role="FormModule" EntitySet="FormModuleSet" />
@@ -51,33 +42,13 @@
             <End Role="RolForm" EntitySet="RolFormPermissionSet" />
             <End Role="Rol" EntitySet="RolSet" />
           </AssociationSet>
-          <AssociationSet Name="UsuarioRolRol" Association="Model1.UsuarioRolRol">
-            <End Role="UserRol" EntitySet="UserRolSet" />
-            <End Role="Rol" EntitySet="RolSet" />
-          </AssociationSet>
-          <AssociationSet Name="UserRolUser" Association="Model1.UserRolUser">
-            <End Role="UserRol" EntitySet="UserRolSet" />
-            <End Role="User" EntitySet="UserSet" />
-          </AssociationSet>
           <AssociationSet Name="UserPerson" Association="Model1.UserPerson">
             <End Role="User" EntitySet="UserSet" />
             <End Role="Person" EntitySet="PersonSet1" />
           </AssociationSet>
-          <AssociationSet Name="useruserSede" Association="Model1.useruserSede">
-            <End Role="User" EntitySet="UserSet" />
-            <End Role="UserSede" EntitySet="UserSedeSet1" />
-          </AssociationSet>
-          <AssociationSet Name="Aprendizuser" Association="Model1.Aprendizuser">
-            <End Role="Aprendiz" EntitySet="AprendizSet1" />
-            <End Role="User" EntitySet="UserSet" />
-          </AssociationSet>
-          <AssociationSet Name="Instructoruser" Association="Model1.Instructoruser">
-            <End Role="Instructor" EntitySet="InstructorSet" />
-            <End Role="User" EntitySet="UserSet" />
-          </AssociationSet>
           <AssociationSet Name="SedePersonSede" Association="Model1.SedePersonSede">
             <End Role="Sede" EntitySet="SedeSet" />
-            <End Role="UserSede" EntitySet="UserSedeSet1" />
+            <End Role="UserSede" EntitySet="PersonSedeSet" />
           </AssociationSet>
           <AssociationSet Name="CenterSede" Association="Model1.CenterSede">
             <End Role="Center" EntitySet="CenterSet" />
@@ -86,46 +57,6 @@
           <AssociationSet Name="RegionalCenter" Association="Model1.RegionalCenter">
             <End Role="Regional" EntitySet="RegionalSet" />
             <End Role="Center" EntitySet="CenterSet" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProgramAprendiz" Association="Model1.AprendizProgramAprendiz">
-            <End Role="AprendizProgram" EntitySet="AprendizProgramSet" />
-            <End Role="Aprendiz" EntitySet="AprendizSet1" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProceesIntructorAprendiz" Association="Model1.AprendizProceesIntructorAprendiz">
-            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
-            <End Role="Aprendiz" EntitySet="AprendizSet1" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProgramProgram" Association="Model1.AprendizProgramProgram">
-            <End Role="AprendizProgram" EntitySet="AprendizProgramSet" />
-            <End Role="Program" EntitySet="ProgramSet" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProceesIntructorInstructor" Association="Model1.AprendizProceesIntructorInstructor">
-            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
-            <End Role="Instructor" EntitySet="InstructorSet" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProceesIntructorTypeModality" Association="Model1.AprendizProceesIntructorTypeModality">
-            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
-            <End Role="TypeModality" EntitySet="TypeModalitySet" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProceesIntructorEnterprise" Association="Model1.AprendizProceesIntructorEnterprise">
-            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
-            <End Role="Enterprise" EntitySet="EnterpriseSet" />
-          </AssociationSet>
-          <AssociationSet Name="ProcessAprendizProceesIntructor" Association="Model1.ProcessAprendizProceesIntructor">
-            <End Role="Process" EntitySet="ProcessSet" />
-            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
-          </AssociationSet>
-          <AssociationSet Name="AprendizProceesIntructorstate" Association="Model1.AprendizProceesIntructorstate">
-            <End Role="AprendizProcessInstructor" EntitySet="AprendizProcessInstructorSet" />
-            <End Role="State" EntitySet="StateSet1" />
-          </AssociationSet>
-          <AssociationSet Name="instructor_programInstructor" Association="Model1.instructor_programInstructor">
-            <End Role="InstructorProgram" EntitySet="instructors_programs" />
-            <End Role="Instructor" EntitySet="InstructorSet" />
-          </AssociationSet>
-          <AssociationSet Name="instructor_programProgram" Association="Model1.instructor_programProgram">
-            <End Role="InstructorProgram" EntitySet="instructors_programs" />
-            <End Role="Program" EntitySet="ProgramSet" />
           </AssociationSet>
           <EntitySet Name="change_logs" EntityType="Model1.change_log" />
           <EntitySet Name="PermissionSet" EntityType="Model1.Permission" />
@@ -137,6 +68,61 @@
           <AssociationSet Name="BossEnterprise" Association="Model1.BossEnterprise">
             <End Role="Boss" EntitySet="BossSet" />
             <End Role="Enterprise" EntitySet="EnterpriseSet" />
+          </AssociationSet>
+          <AssociationSet Name="RolUser" Association="Model1.RolUser">
+            <End Role="Rol" EntitySet="RolSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <EntitySet Name="FichaSet" EntityType="Model1.Ficha" />
+          <EntitySet Name="AprendizSet" EntityType="Model1.Aprendiz" />
+          <EntitySet Name="InstructorSet" EntityType="Model1.Instructor" />
+          <AssociationSet Name="CodeProgramProgram" Association="Model1.CodeProgramProgram">
+            <End Role="CodeProgram" EntitySet="FichaSet" />
+            <End Role="Program" EntitySet="ProgramSet" />
+          </AssociationSet>
+          <EntitySet Name="SolicitudAsignacionSet" EntityType="Model1.SolicitudAsignacion" />
+          <EntitySet Name="SeguimientoVisitaSet" EntityType="Model1.SeguimientoVisita" />
+          <EntitySet Name="ModalidadEtapaProductivaSet" EntityType="Model1.ModalidadEtapaProductiva" />
+          <AssociationSet Name="SolicitudAsignacionInstructor" Association="Model1.SolicitudAsignacionInstructor">
+            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="Instructor" EntitySet="InstructorSet" />
+          </AssociationSet>
+          <AssociationSet Name="SolicitudAsignacionAprendiz" Association="Model1.SolicitudAsignacionAprendiz">
+            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="Aprendiz" EntitySet="AprendizSet" />
+          </AssociationSet>
+          <AssociationSet Name="SeguimientoVisitaSolicitudAsignacion" Association="Model1.SeguimientoVisitaSolicitudAsignacion">
+            <End Role="SeguimientoVisita" EntitySet="SeguimientoVisitaSet" />
+            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+          </AssociationSet>
+          <AssociationSet Name="SolicitudAsignacionModalidadEtapaProductiva" Association="Model1.SolicitudAsignacionModalidadEtapaProductiva">
+            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="ModalidadEtapaProductiva" EntitySet="ModalidadEtapaProductivaSet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizPerson" Association="Model1.AprendizPerson">
+            <End Role="Aprendiz" EntitySet="AprendizSet" />
+            <End Role="Person" EntitySet="PersonSet1" />
+          </AssociationSet>
+          <AssociationSet Name="PersonInstructor" Association="Model1.PersonInstructor">
+            <End Role="Person" EntitySet="PersonSet1" />
+            <End Role="Instructor" EntitySet="InstructorSet" />
+          </AssociationSet>
+          <AssociationSet Name="AprendizFicha" Association="Model1.AprendizFicha">
+            <End Role="Aprendiz" EntitySet="AprendizSet" />
+            <End Role="Ficha" EntitySet="FichaSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonSedePerson" Association="Model1.PersonSedePerson">
+            <End Role="PersonSede" EntitySet="PersonSedeSet" />
+            <End Role="Person" EntitySet="PersonSet1" />
+          </AssociationSet>
+          <EntitySet Name="AsignationInstructorSet" EntityType="Model1.AsignationInstructor" />
+          <AssociationSet Name="AsignationInstructorSolicitudAsignacion" Association="Model1.AsignationInstructorSolicitudAsignacion">
+            <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
+            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+          </AssociationSet>
+          <AssociationSet Name="AsignationInstructorInstructor" Association="Model1.AsignationInstructorInstructor">
+            <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
+            <End Role="Instructor" EntitySet="InstructorSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Form">
@@ -190,15 +176,7 @@
           <Property Name="Description" Type="String" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="RolForm" Relationship="Model1.RolRolForm" FromRole="Rol" ToRole="RolForm" />
-          <NavigationProperty Name="UsuarioRol" Relationship="Model1.UsuarioRolRol" FromRole="Rol" ToRole="UserRol" />
-        </EntityType>
-        <EntityType Name="UserRol">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RolId" Relationship="Model1.UsuarioRolRol" FromRole="UserRol" ToRole="Rol" />
-          <NavigationProperty Name="UserId" Relationship="Model1.UserRolUser" FromRole="UserRol" ToRole="User" />
+          <NavigationProperty Name="UserId" Relationship="Model1.RolUser" FromRole="Rol" ToRole="User" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -215,6 +193,9 @@
           <Property Name="TypeIdentification" Type="String" Nullable="false" />
           <Property Name="NumberIdentification" Type="String" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Model1.UserPerson" FromRole="Person" ToRole="User" />
+          <NavigationProperty Name="Aprendiz" Relationship="Model1.AprendizPerson" FromRole="Person" ToRole="Aprendiz" />
+          <NavigationProperty Name="Instructor" Relationship="Model1.PersonInstructor" FromRole="Person" ToRole="Instructor" />
+          <NavigationProperty Name="PersonSede" Relationship="Model1.PersonSedePerson" FromRole="Person" ToRole="PersonSede" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -225,20 +206,17 @@
           <Property Name="Password" Type="String" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
-          <NavigationProperty Name="UserRol" Relationship="Model1.UserRolUser" FromRole="User" ToRole="UserRol" />
           <NavigationProperty Name="PersonId" Relationship="Model1.UserPerson" FromRole="User" ToRole="Person" />
-          <NavigationProperty Name="UserSede" Relationship="Model1.useruserSede" FromRole="User" ToRole="UserSede" />
-          <NavigationProperty Name="Aprendiz" Relationship="Model1.Aprendizuser" FromRole="User" ToRole="Aprendiz" />
-          <NavigationProperty Name="Instructor" Relationship="Model1.Instructoruser" FromRole="User" ToRole="Instructor" />
           <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="RolId" Relationship="Model1.RolUser" FromRole="User" ToRole="Rol" />
         </EntityType>
-        <EntityType Name="UserSede">
+        <EntityType Name="PersonSede">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="UserId" Relationship="Model1.useruserSede" FromRole="UserSede" ToRole="User" />
           <NavigationProperty Name="SedeId" Relationship="Model1.SedePersonSede" FromRole="UserSede" ToRole="Sede" />
+          <NavigationProperty Name="PersonId" Relationship="Model1.PersonSedePerson" FromRole="PersonSede" ToRole="Person" />
         </EntityType>
         <EntityType Name="Sede">
           <Key>
@@ -280,45 +258,6 @@
           <Property Name="Address" Type="String" Nullable="false" />
           <NavigationProperty Name="Center" Relationship="Model1.RegionalCenter" FromRole="Regional" ToRole="Center" />
         </EntityType>
-        <EntityType Name="Aprendiz">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PreviousProgram" Type="String" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Model1.Aprendizuser" FromRole="Aprendiz" ToRole="User" />
-          <NavigationProperty Name="AprendizProgram" Relationship="Model1.AprendizProgramAprendiz" FromRole="Aprendiz" ToRole="AprendizProgram" />
-          <NavigationProperty Name="AprendizProcessIntructor" Relationship="Model1.AprendizProceesIntructorAprendiz" FromRole="Aprendiz" ToRole="AprendizProcessInstructor" />
-        </EntityType>
-        <EntityType Name="AprendizProgram">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="AprendizId" Relationship="Model1.AprendizProgramAprendiz" FromRole="AprendizProgram" ToRole="Aprendiz" />
-          <NavigationProperty Name="ProgramId" Relationship="Model1.AprendizProgramProgram" FromRole="AprendizProgram" ToRole="Program" />
-        </EntityType>
-        <EntityType Name="Instructor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UserId" Relationship="Model1.Instructoruser" FromRole="Instructor" ToRole="User" />
-          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorInstructor" FromRole="Instructor" ToRole="AprendizProcessInstructor" />
-          <NavigationProperty Name="InstructorProgram" Relationship="Model1.instructor_programInstructor" FromRole="Instructor" ToRole="InstructorProgram" />
-        </EntityType>
-        <EntityType Name="TypeModality">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Active" Type="String" Nullable="false" />
-          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorTypeModality" FromRole="TypeModality" ToRole="AprendizProcessInstructor" />
-        </EntityType>
         <EntityType Name="Enterprise">
           <Key>
             <PropertyRef Name="Id" />
@@ -332,51 +271,7 @@
           <Property Name="NitEnterprise" Type="Int16" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="EmailEnterprise" Type="String" Nullable="false" />
-          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorEnterprise" FromRole="Enterprise" ToRole="AprendizProcessInstructor" />
           <NavigationProperty Name="BossId" Relationship="Model1.BossEnterprise" FromRole="Enterprise" ToRole="Boss" />
-        </EntityType>
-        <EntityType Name="Process">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeProcess" Type="String" Nullable="false" />
-          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="StartAprendiz" Type="DateTime" Nullable="false" />
-          <Property Name="Observation" Type="String" Nullable="false" />
-          <NavigationProperty Name="AprendizProceesIntructor" Relationship="Model1.ProcessAprendizProceesIntructor" FromRole="Process" ToRole="AprendizProcessInstructor" />
-        </EntityType>
-        <EntityType Name="AprendizProcessInstructor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="AprendizId" Relationship="Model1.AprendizProceesIntructorAprendiz" FromRole="AprendizProcessInstructor" ToRole="Aprendiz" />
-          <NavigationProperty Name="InstructorId" Relationship="Model1.AprendizProceesIntructorInstructor" FromRole="AprendizProcessInstructor" ToRole="Instructor" />
-          <NavigationProperty Name="TypeModalityId" Relationship="Model1.AprendizProceesIntructorTypeModality" FromRole="AprendizProcessInstructor" ToRole="TypeModality" />
-          <NavigationProperty Name="EnterpriseId" Relationship="Model1.AprendizProceesIntructorEnterprise" FromRole="AprendizProcessInstructor" ToRole="Enterprise" />
-          <NavigationProperty Name="ProcessId" Relationship="Model1.ProcessAprendizProceesIntructor" FromRole="AprendizProcessInstructor" ToRole="Process" />
-          <NavigationProperty Name="StateId" Relationship="Model1.AprendizProceesIntructorstate" FromRole="AprendizProcessInstructor" ToRole="State" />
-        </EntityType>
-        <EntityType Name="State">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="TypeState" Type="String" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" />
-          <NavigationProperty Name="AprendizProcessInstructor" Relationship="Model1.AprendizProceesIntructorstate" FromRole="State" ToRole="AprendizProcessInstructor" />
-        </EntityType>
-        <EntityType Name="InstructorProgram">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="InstructorId" Relationship="Model1.instructor_programInstructor" FromRole="InstructorProgram" ToRole="Instructor" />
-          <NavigationProperty Name="ProgramId" Relationship="Model1.instructor_programProgram" FromRole="InstructorProgram" ToRole="Program" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -389,8 +284,7 @@
           <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <NavigationProperty Name="AprendizProgram" Relationship="Model1.AprendizProgramProgram" FromRole="Program" ToRole="AprendizProgram" />
-          <NavigationProperty Name="InstructorProgram" Relationship="Model1.instructor_programProgram" FromRole="Program" ToRole="InstructorProgram" />
+          <NavigationProperty Name="CodeProgram1" Relationship="Model1.CodeProgramProgram" FromRole="Program" ToRole="CodeProgram" />
         </EntityType>
         <Association Name="FormModuleForm">
           <End Type="Model1.FormModule" Role="FormModule" Multiplicity="*" />
@@ -408,33 +302,13 @@
           <End Type="Model1.RolFormPermission" Role="RolForm" Multiplicity="*" />
           <End Type="Model1.Rol" Role="Rol" Multiplicity="1" />
         </Association>
-        <Association Name="UsuarioRolRol">
-          <End Type="Model1.UserRol" Role="UserRol" Multiplicity="*" />
-          <End Type="Model1.Rol" Role="Rol" Multiplicity="1" />
-        </Association>
-        <Association Name="UserRolUser">
-          <End Type="Model1.UserRol" Role="UserRol" Multiplicity="*" />
-          <End Type="Model1.User" Role="User" Multiplicity="1" />
-        </Association>
         <Association Name="UserPerson">
           <End Type="Model1.User" Role="User" Multiplicity="1" />
           <End Type="Model1.Person" Role="Person" Multiplicity="1" />
         </Association>
-        <Association Name="useruserSede">
-          <End Type="Model1.User" Role="User" Multiplicity="1" />
-          <End Type="Model1.UserSede" Role="UserSede" Multiplicity="*" />
-        </Association>
-        <Association Name="Aprendizuser">
-          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
-          <End Type="Model1.User" Role="User" Multiplicity="1" />
-        </Association>
-        <Association Name="Instructoruser">
-          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
-          <End Type="Model1.User" Role="User" Multiplicity="1" />
-        </Association>
         <Association Name="SedePersonSede">
           <End Type="Model1.Sede" Role="Sede" Multiplicity="1" />
-          <End Type="Model1.UserSede" Role="UserSede" Multiplicity="*" />
+          <End Type="Model1.PersonSede" Role="UserSede" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sede">
               <PropertyRef Name="Id" />
@@ -451,46 +325,6 @@
         <Association Name="RegionalCenter">
           <End Type="Model1.Regional" Role="Regional" Multiplicity="1" />
           <End Type="Model1.Center" Role="Center" Multiplicity="*" />
-        </Association>
-        <Association Name="AprendizProgramAprendiz">
-          <End Type="Model1.AprendizProgram" Role="AprendizProgram" Multiplicity="*" />
-          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
-        </Association>
-        <Association Name="AprendizProceesIntructorAprendiz">
-          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
-          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
-        </Association>
-        <Association Name="AprendizProgramProgram">
-          <End Type="Model1.AprendizProgram" Role="AprendizProgram" Multiplicity="*" />
-          <End Type="Model1.Program" Role="Program" Multiplicity="1" />
-        </Association>
-        <Association Name="AprendizProceesIntructorInstructor">
-          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
-          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
-        </Association>
-        <Association Name="AprendizProceesIntructorTypeModality">
-          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
-          <End Type="Model1.TypeModality" Role="TypeModality" Multiplicity="1" />
-        </Association>
-        <Association Name="AprendizProceesIntructorEnterprise">
-          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
-          <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
-        </Association>
-        <Association Name="ProcessAprendizProceesIntructor">
-          <End Type="Model1.Process" Role="Process" Multiplicity="1" />
-          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
-        </Association>
-        <Association Name="AprendizProceesIntructorstate">
-          <End Type="Model1.AprendizProcessInstructor" Role="AprendizProcessInstructor" Multiplicity="*" />
-          <End Type="Model1.State" Role="State" Multiplicity="1" />
-        </Association>
-        <Association Name="instructor_programInstructor">
-          <End Type="Model1.InstructorProgram" Role="InstructorProgram" Multiplicity="*" />
-          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
-        </Association>
-        <Association Name="instructor_programProgram">
-          <End Type="Model1.InstructorProgram" Role="InstructorProgram" Multiplicity="*" />
-          <End Type="Model1.Program" Role="Program" Multiplicity="1" />
         </Association>
         <EntityType Name="change_log">
           <Key>
@@ -531,6 +365,138 @@
         <Association Name="BossEnterprise">
           <End Type="Model1.Boss" Role="Boss" Multiplicity="1" />
           <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
+        </Association>
+        <Association Name="RolUser">
+          <End Type="Model1.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Ficha">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProgramId" Relationship="Model1.CodeProgramProgram" FromRole="CodeProgram" ToRole="Program" />
+          <Property Name="NumeroFicha" Type="String" Nullable="false" />
+          <NavigationProperty Name="Aprendiz" Relationship="Model1.AprendizFicha" FromRole="Ficha" ToRole="Aprendiz" />
+        </EntityType>
+        <EntityType Name="Aprendiz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionAprendiz" FromRole="Aprendiz" ToRole="SolicitudAsignacion" />
+          <NavigationProperty Name="PersonId" Relationship="Model1.AprendizPerson" FromRole="Aprendiz" ToRole="Person" />
+          <NavigationProperty Name="FichaId" Relationship="Model1.AprendizFicha" FromRole="Aprendiz" ToRole="Ficha" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionInstructor" FromRole="Instructor" ToRole="SolicitudAsignacion" />
+          <NavigationProperty Name="PersonId" Relationship="Model1.PersonInstructor" FromRole="Instructor" ToRole="Person" />
+          <Property Name="ContractType" Type="String" Nullable="false" />
+          <Property Name="ContractStartDate" Type="String" Nullable="false" />
+          <Property Name="ContractEndDate" Type="String" Nullable="false" />
+          <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorInstructor" FromRole="Instructor" ToRole="AsignationInstructor" />
+        </EntityType>
+        <Association Name="CodeProgramProgram">
+          <End Type="Model1.Ficha" Role="CodeProgram" Multiplicity="*" />
+          <End Type="Model1.Program" Role="Program" Multiplicity="1" />
+        </Association>
+        <EntityType Name="SolicitudAsignacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="InstructorId" Relationship="Model1.SolicitudAsignacionInstructor" FromRole="SolicitudAsignacion" ToRole="Instructor" />
+          <NavigationProperty Name="AprendizId" Relationship="Model1.SolicitudAsignacionAprendiz" FromRole="SolicitudAsignacion" ToRole="Aprendiz" />
+          <NavigationProperty Name="SeguimientoVisitaId" Relationship="Model1.SeguimientoVisitaSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="SeguimientoVisita" />
+          <NavigationProperty Name="ModalidadEtapaProductivaId" Relationship="Model1.SolicitudAsignacionModalidadEtapaProductiva" FromRole="SolicitudAsignacion" ToRole="ModalidadEtapaProductiva" />
+          <Property Name="FechaSolicitud" Type="String" Nullable="false" />
+          <Property Name="FecheInicioEtapaProductiva" Type="String" Nullable="false" />
+          <Property Name="FecheFinEtapaProductiva" Type="String" Nullable="false" />
+          <Property Name="PDFSolicitud" Type="String" Nullable="false" />
+          <Property Name="EstadoSolicitud" Type="String" Nullable="false" />
+          <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="AsignationInstructor" />
+        </EntityType>
+        <EntityType Name="SeguimientoVisita">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SolicitudAsignacionId" Relationship="Model1.SeguimientoVisitaSolicitudAsignacion" FromRole="SeguimientoVisita" ToRole="SolicitudAsignacion" />
+          <Property Name="VisitNumber" Type="String" Nullable="false" />
+          <Property Name="Observations" Type="String" Nullable="false" />
+          <Property Name="StateVisit" Type="String" Nullable="false" />
+          <Property Name="ScheduledDate" Type="String" Nullable="false" />
+          <Property Name="DateVisitMade" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModalidadEtapaProductiva">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionModalidadEtapaProductiva" FromRole="ModalidadEtapaProductiva" ToRole="SolicitudAsignacion" />
+          <Property Name="NameModality" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="SolicitudAsignacionInstructor">
+          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+        </Association>
+        <Association Name="SolicitudAsignacionAprendiz">
+          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
+        </Association>
+        <Association Name="SeguimientoVisitaSolicitudAsignacion">
+          <End Type="Model1.SeguimientoVisita" Role="SeguimientoVisita" Multiplicity="*" />
+          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="1" />
+        </Association>
+        <Association Name="SolicitudAsignacionModalidadEtapaProductiva">
+          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.ModalidadEtapaProductiva" Role="ModalidadEtapaProductiva" Multiplicity="1" />
+        </Association>
+        <Association Name="AprendizPerson">
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="*" />
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+        </Association>
+        <Association Name="PersonInstructor">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Instructor">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AprendizFicha">
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="*" />
+          <End Type="Model1.Ficha" Role="Ficha" Multiplicity="1" />
+        </Association>
+        <Association Name="PersonSedePerson">
+          <End Type="Model1.PersonSede" Role="PersonSede" Multiplicity="*" />
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+        </Association>
+        <EntityType Name="AsignationInstructor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateAsignation" Type="String" Nullable="false" />
+          <NavigationProperty Name="SolicitudAsignacionId" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="AsignationInstructor" ToRole="SolicitudAsignacion" />
+          <NavigationProperty Name="InstructorId" Relationship="Model1.AsignationInstructorInstructor" FromRole="AsignationInstructor" ToRole="Instructor" />
+        </EntityType>
+        <Association Name="AsignationInstructorSolicitudAsignacion">
+          <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
+          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="1" />
+        </Association>
+        <Association Name="AsignationInstructorInstructor">
+          <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
