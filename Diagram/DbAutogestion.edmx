@@ -124,6 +124,10 @@
             <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
             <End Role="Instructor" EntitySet="InstructorSet" />
           </AssociationSet>
+          <AssociationSet Name="SolicitudAsignacionEnterprise" Association="Model1.SolicitudAsignacionEnterprise">
+            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="Enterprise" EntitySet="EnterpriseSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Form">
           <Key>
@@ -202,7 +206,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
@@ -272,6 +275,7 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="EmailEnterprise" Type="String" Nullable="false" />
           <NavigationProperty Name="BossId" Relationship="Model1.BossEnterprise" FromRole="Enterprise" ToRole="Boss" />
+          <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="Enterprise" ToRole="SolicitudAsignacion" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -399,6 +403,7 @@
           <Property Name="ContractStartDate" Type="String" Nullable="false" />
           <Property Name="ContractEndDate" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorInstructor" FromRole="Instructor" ToRole="AsignationInstructor" />
+          <Property Name="KnowledgeArea" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="CodeProgramProgram">
           <End Type="Model1.Ficha" Role="CodeProgram" Multiplicity="*" />
@@ -419,6 +424,7 @@
           <Property Name="PDFSolicitud" Type="String" Nullable="false" />
           <Property Name="EstadoSolicitud" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="AsignationInstructor" />
+          <NavigationProperty Name="EnterpriseId" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="SolicitudAsignacion" ToRole="Enterprise" />
         </EntityType>
         <EntityType Name="SeguimientoVisita">
           <Key>
@@ -497,6 +503,10 @@
         <Association Name="AsignationInstructorInstructor">
           <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
           <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+        </Association>
+        <Association Name="SolicitudAsignacionEnterprise">
+          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
