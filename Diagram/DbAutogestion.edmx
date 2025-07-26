@@ -128,6 +128,7 @@
             <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
             <End Role="Enterprise" EntitySet="EnterpriseSet" />
           </AssociationSet>
+          <EntitySet Name="HumanTalentSet" EntityType="Model1.HumanTalent" />
         </EntityContainer>
         <EntityType Name="Form">
           <Key>
@@ -149,6 +150,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="FormId" Relationship="Model1.FormModuleForm" FromRole="FormModule" ToRole="Form" />
           <NavigationProperty Name="ModuleId" Relationship="Model1.FormModuleModule" FromRole="FormModule" ToRole="Module" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Module">
           <Key>
@@ -170,6 +172,7 @@
           <NavigationProperty Name="FormId" Relationship="Model1.RolFormForm" FromRole="RolForm" ToRole="Form" />
           <NavigationProperty Name="RolId" Relationship="Model1.RolRolForm" FromRole="RolForm" ToRole="Rol" />
           <NavigationProperty Name="Permission1" Relationship="Model1.RolFormPermissionPermission" FromRole="RolFormPermission" ToRole="Permission" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -181,6 +184,7 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="RolForm" Relationship="Model1.RolRolForm" FromRole="Rol" ToRole="RolForm" />
           <NavigationProperty Name="UserId" Relationship="Model1.RolUser" FromRole="Rol" ToRole="User" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -220,6 +224,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="SedeId" Relationship="Model1.SedePersonSede" FromRole="UserSede" ToRole="Sede" />
           <NavigationProperty Name="PersonId" Relationship="Model1.PersonSedePerson" FromRole="PersonSede" ToRole="Person" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Sede">
           <Key>
@@ -260,6 +265,7 @@
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="Address" Type="String" Nullable="false" />
           <NavigationProperty Name="Center" Relationship="Model1.RegionalCenter" FromRole="Regional" ToRole="Center" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Enterprise">
           <Key>
@@ -350,6 +356,8 @@
           <Property Name="TypePermission" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
           <NavigationProperty Name="RolFormPermission" Relationship="Model1.RolFormPermissionPermission" FromRole="Permission" ToRole="RolFormPermission" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="RolFormPermissionPermission">
           <End Type="Model1.RolFormPermission" Role="RolFormPermission" Multiplicity="*" />
@@ -365,6 +373,8 @@
           <Property Name="PhoneNumber" Type="String" Nullable="false" />
           <Property Name="EmailBoss" Type="String" Nullable="false" />
           <NavigationProperty Name="EnterpriseId" Relationship="Model1.BossEnterprise" FromRole="Boss" ToRole="Enterprise" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="BossEnterprise">
           <End Type="Model1.Boss" Role="Boss" Multiplicity="1" />
@@ -382,6 +392,8 @@
           <NavigationProperty Name="ProgramId" Relationship="Model1.CodeProgramProgram" FromRole="CodeProgram" ToRole="Program" />
           <Property Name="NumeroFicha" Type="String" Nullable="false" />
           <NavigationProperty Name="Aprendiz" Relationship="Model1.AprendizFicha" FromRole="Ficha" ToRole="Aprendiz" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Aprendiz">
           <Key>
@@ -391,6 +403,8 @@
           <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionAprendiz" FromRole="Aprendiz" ToRole="SolicitudAsignacion" />
           <NavigationProperty Name="PersonId" Relationship="Model1.AprendizPerson" FromRole="Aprendiz" ToRole="Person" />
           <NavigationProperty Name="FichaId" Relationship="Model1.AprendizFicha" FromRole="Aprendiz" ToRole="Ficha" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Instructor">
           <Key>
@@ -404,6 +418,8 @@
           <Property Name="ContractEndDate" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorInstructor" FromRole="Instructor" ToRole="AsignationInstructor" />
           <Property Name="KnowledgeArea" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="CodeProgramProgram">
           <End Type="Model1.Ficha" Role="CodeProgram" Multiplicity="*" />
@@ -425,6 +441,7 @@
           <Property Name="EstadoSolicitud" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="AsignationInstructor" />
           <NavigationProperty Name="EnterpriseId" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="SolicitudAsignacion" ToRole="Enterprise" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="SeguimientoVisita">
           <Key>
@@ -437,6 +454,8 @@
           <Property Name="StateVisit" Type="String" Nullable="false" />
           <Property Name="ScheduledDate" Type="String" Nullable="false" />
           <Property Name="DateVisitMade" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="ModalidadEtapaProductiva">
           <Key>
@@ -446,6 +465,8 @@
           <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionModalidadEtapaProductiva" FromRole="ModalidadEtapaProductiva" ToRole="SolicitudAsignacion" />
           <Property Name="NameModality" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="SolicitudAsignacionInstructor">
           <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
@@ -495,6 +516,7 @@
           <Property Name="DateAsignation" Type="String" Nullable="false" />
           <NavigationProperty Name="SolicitudAsignacionId" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="AsignationInstructor" ToRole="SolicitudAsignacion" />
           <NavigationProperty Name="InstructorId" Relationship="Model1.AsignationInstructorInstructor" FromRole="AsignationInstructor" ToRole="Instructor" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="AsignationInstructorSolicitudAsignacion">
           <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
@@ -508,6 +530,17 @@
           <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
           <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
         </Association>
+        <EntityType Name="HumanTalent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int16" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
