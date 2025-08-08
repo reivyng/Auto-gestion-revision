@@ -82,7 +82,7 @@
           </AssociationSet>
           <EntitySet Name="SolicitudAsignacionSet" EntityType="Model1.SolicitudAsignacion" />
           <EntitySet Name="SeguimientoVisitaSet" EntityType="Model1.SeguimientoVisita" />
-          <EntitySet Name="ModalidadEtapaProductivaSet" EntityType="Model1.ModalidadEtapaProductiva" />
+          <EntitySet Name="ModalityProductiveStageSet" EntityType="Model1.ModalityProductiveStage" />
           <AssociationSet Name="SolicitudAsignacionInstructor" Association="Model1.SolicitudAsignacionInstructor">
             <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
             <End Role="Instructor" EntitySet="InstructorSet" />
@@ -97,7 +97,7 @@
           </AssociationSet>
           <AssociationSet Name="SolicitudAsignacionModalidadEtapaProductiva" Association="Model1.SolicitudAsignacionModalidadEtapaProductiva">
             <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
-            <End Role="ModalidadEtapaProductiva" EntitySet="ModalidadEtapaProductivaSet" />
+            <End Role="ModalidadEtapaProductiva" EntitySet="ModalityProductiveStageSet" />
           </AssociationSet>
           <AssociationSet Name="AprendizPerson" Association="Model1.AprendizPerson">
             <End Role="Aprendiz" EntitySet="AprendizSet" />
@@ -129,6 +129,10 @@
             <End Role="Enterprise" EntitySet="EnterpriseSet" />
           </AssociationSet>
           <EntitySet Name="HumanTalentSet" EntityType="Model1.HumanTalent" />
+          <AssociationSet Name="EnterpriseHumanTalent" Association="Model1.EnterpriseHumanTalent">
+            <End Role="Enterprise" EntitySet="EnterpriseSet" />
+            <End Role="HumanTalent" EntitySet="HumanTalentSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Form">
           <Key>
@@ -273,15 +277,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-          <Property Name="Observation" Type="String" Nullable="false" />
           <Property Name="NameEnterprise" Type="String" Nullable="false" />
-          <Property Name="PhoneEnterprise" Type="Int16" Nullable="false" />
           <Property Name="Locate" Type="String" Nullable="false" />
           <Property Name="NitEnterprise" Type="Int16" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="EmailEnterprise" Type="String" Nullable="false" />
           <NavigationProperty Name="BossId" Relationship="Model1.BossEnterprise" FromRole="Enterprise" ToRole="Boss" />
           <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="Enterprise" ToRole="SolicitudAsignacion" />
+          <NavigationProperty Name="HumanTalent" Relationship="Model1.EnterpriseHumanTalent" FromRole="Enterprise" ToRole="HumanTalent" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -369,12 +372,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameBoss" Type="String" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" />
           <Property Name="EmailBoss" Type="String" Nullable="false" />
           <NavigationProperty Name="EnterpriseId" Relationship="Model1.BossEnterprise" FromRole="Boss" ToRole="Enterprise" />
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <Property Name="Position" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="BossEnterprise">
           <End Type="Model1.Boss" Role="Boss" Multiplicity="1" />
@@ -456,8 +459,9 @@
           <Property Name="DateVisitMade" Type="String" Nullable="false" />
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <Property Name="NameVisit" Type="String" Nullable="false" />
         </EntityType>
-        <EntityType Name="ModalidadEtapaProductiva">
+        <EntityType Name="ModalityProductiveStage">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -482,7 +486,7 @@
         </Association>
         <Association Name="SolicitudAsignacionModalidadEtapaProductiva">
           <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
-          <End Type="Model1.ModalidadEtapaProductiva" Role="ModalidadEtapaProductiva" Multiplicity="1" />
+          <End Type="Model1.ModalityProductiveStage" Role="ModalidadEtapaProductiva" Multiplicity="1" />
         </Association>
         <Association Name="AprendizPerson">
           <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="*" />
@@ -540,7 +544,12 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
           <Property Name="PhoneNumber" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="EnterpriseId" Relationship="Model1.EnterpriseHumanTalent" FromRole="HumanTalent" ToRole="Enterprise" />
         </EntityType>
+        <Association Name="EnterpriseHumanTalent">
+          <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
+          <End Type="Model1.HumanTalent" Role="HumanTalent" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
