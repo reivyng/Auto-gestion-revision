@@ -208,6 +208,7 @@
           <NavigationProperty Name="Aprendiz" Relationship="Model1.AprendizPerson" FromRole="Person" ToRole="Aprendiz" />
           <NavigationProperty Name="Instructor" Relationship="Model1.PersonInstructor" FromRole="Person" ToRole="Instructor" />
           <NavigationProperty Name="PersonSede" Relationship="Model1.PersonSedePerson" FromRole="Person" ToRole="PersonSede" />
+          <Property Name="image" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -437,11 +438,11 @@
           <NavigationProperty Name="AprendizId" Relationship="Model1.SolicitudAsignacionAprendiz" FromRole="SolicitudAsignacion" ToRole="Aprendiz" />
           <NavigationProperty Name="SeguimientoVisitaId" Relationship="Model1.SeguimientoVisitaSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="SeguimientoVisita" />
           <NavigationProperty Name="ModalidadEtapaProductivaId" Relationship="Model1.SolicitudAsignacionModalidadEtapaProductiva" FromRole="SolicitudAsignacion" ToRole="ModalidadEtapaProductiva" />
-          <Property Name="FechaSolicitud" Type="String" Nullable="false" />
+          <Property Name="RequestDate" Type="String" Nullable="false" />
           <Property Name="FecheInicioEtapaProductiva" Type="String" Nullable="false" />
-          <Property Name="FecheFinEtapaProductiva" Type="String" Nullable="false" />
-          <Property Name="PDFSolicitud" Type="String" Nullable="false" />
-          <Property Name="EstadoSolicitud" Type="String" Nullable="false" />
+          <Property Name="DateStartProductionStage" Type="String" Nullable="false" />
+          <Property Name="PDFRequest" Type="String" Nullable="false" />
+          <Property Name="RequestState" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="AsignationInstructor" />
           <NavigationProperty Name="EnterpriseId" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="SolicitudAsignacion" ToRole="Enterprise" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
@@ -460,6 +461,7 @@
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
           <Property Name="NameVisit" Type="String" Nullable="false" />
+          <Property Name="ObservationStateVisit" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="ModalityProductiveStage">
           <Key>
