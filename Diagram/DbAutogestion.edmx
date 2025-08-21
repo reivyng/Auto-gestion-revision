@@ -80,23 +80,23 @@
             <End Role="CodeProgram" EntitySet="FichaSet" />
             <End Role="Program" EntitySet="ProgramSet" />
           </AssociationSet>
-          <EntitySet Name="SolicitudAsignacionSet" EntityType="Model1.SolicitudAsignacion" />
+          <EntitySet Name="RequestAsignationSet" EntityType="Model1.RequestAsignation" />
           <EntitySet Name="SeguimientoVisitaSet" EntityType="Model1.SeguimientoVisita" />
           <EntitySet Name="ModalityProductiveStageSet" EntityType="Model1.ModalityProductiveStage" />
           <AssociationSet Name="SolicitudAsignacionInstructor" Association="Model1.SolicitudAsignacionInstructor">
-            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
             <End Role="Instructor" EntitySet="InstructorSet" />
           </AssociationSet>
           <AssociationSet Name="SolicitudAsignacionAprendiz" Association="Model1.SolicitudAsignacionAprendiz">
-            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
             <End Role="Aprendiz" EntitySet="AprendizSet" />
           </AssociationSet>
           <AssociationSet Name="SeguimientoVisitaSolicitudAsignacion" Association="Model1.SeguimientoVisitaSolicitudAsignacion">
             <End Role="SeguimientoVisita" EntitySet="SeguimientoVisitaSet" />
-            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
           </AssociationSet>
           <AssociationSet Name="SolicitudAsignacionModalidadEtapaProductiva" Association="Model1.SolicitudAsignacionModalidadEtapaProductiva">
-            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
             <End Role="ModalidadEtapaProductiva" EntitySet="ModalityProductiveStageSet" />
           </AssociationSet>
           <AssociationSet Name="AprendizPerson" Association="Model1.AprendizPerson">
@@ -118,14 +118,14 @@
           <EntitySet Name="AsignationInstructorSet" EntityType="Model1.AsignationInstructor" />
           <AssociationSet Name="AsignationInstructorSolicitudAsignacion" Association="Model1.AsignationInstructorSolicitudAsignacion">
             <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
-            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
           </AssociationSet>
           <AssociationSet Name="AsignationInstructorInstructor" Association="Model1.AsignationInstructorInstructor">
             <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
             <End Role="Instructor" EntitySet="InstructorSet" />
           </AssociationSet>
           <AssociationSet Name="SolicitudAsignacionEnterprise" Association="Model1.SolicitudAsignacionEnterprise">
-            <End Role="SolicitudAsignacion" EntitySet="SolicitudAsignacionSet" />
+            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
             <End Role="Enterprise" EntitySet="EnterpriseSet" />
           </AssociationSet>
           <EntitySet Name="HumanTalentSet" EntityType="Model1.HumanTalent" />
@@ -429,7 +429,7 @@
           <End Type="Model1.Ficha" Role="CodeProgram" Multiplicity="*" />
           <End Type="Model1.Program" Role="Program" Multiplicity="1" />
         </Association>
-        <EntityType Name="SolicitudAsignacion">
+        <EntityType Name="RequestAsignation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -439,7 +439,6 @@
           <NavigationProperty Name="SeguimientoVisitaId" Relationship="Model1.SeguimientoVisitaSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="SeguimientoVisita" />
           <NavigationProperty Name="ModalidadEtapaProductivaId" Relationship="Model1.SolicitudAsignacionModalidadEtapaProductiva" FromRole="SolicitudAsignacion" ToRole="ModalidadEtapaProductiva" />
           <Property Name="RequestDate" Type="String" Nullable="false" />
-          <Property Name="FecheInicioEtapaProductiva" Type="String" Nullable="false" />
           <Property Name="DateStartProductionStage" Type="String" Nullable="false" />
           <Property Name="PDFRequest" Type="String" Nullable="false" />
           <Property Name="RequestState" Type="String" Nullable="false" />
@@ -475,19 +474,19 @@
           <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="SolicitudAsignacionInstructor">
-          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="*" />
           <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
         </Association>
         <Association Name="SolicitudAsignacionAprendiz">
-          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="*" />
           <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
         </Association>
         <Association Name="SeguimientoVisitaSolicitudAsignacion">
           <End Type="Model1.SeguimientoVisita" Role="SeguimientoVisita" Multiplicity="*" />
-          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="1" />
+          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="1" />
         </Association>
         <Association Name="SolicitudAsignacionModalidadEtapaProductiva">
-          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="*" />
           <End Type="Model1.ModalityProductiveStage" Role="ModalidadEtapaProductiva" Multiplicity="1" />
         </Association>
         <Association Name="AprendizPerson">
@@ -526,14 +525,14 @@
         </EntityType>
         <Association Name="AsignationInstructorSolicitudAsignacion">
           <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
-          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="1" />
+          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="1" />
         </Association>
         <Association Name="AsignationInstructorInstructor">
           <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
           <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
         </Association>
         <Association Name="SolicitudAsignacionEnterprise">
-          <End Type="Model1.SolicitudAsignacion" Role="SolicitudAsignacion" Multiplicity="*" />
+          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="*" />
           <End Type="Model1.Enterprise" Role="Enterprise" Multiplicity="1" />
         </Association>
         <EntityType Name="HumanTalent">
