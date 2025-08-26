@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="021bf354e36d426d803f56205b3d8996" Name="Diagram1" ZoomLevel="93" >
+      <Diagram DiagramId="021bf354e36d426d803f56205b3d8996" Name="Diagram1" ZoomLevel="60" >
         <EntityTypeShape EntityType="Model1.Form" Width="1.5" PointX="33.125" PointY="16.25" />
         <EntityTypeShape EntityType="Model1.FormModule" Width="1.5" PointX="30.75" PointY="16.5" />
         <EntityTypeShape EntityType="Model1.Module" Width="1.5" PointX="28.5" PointY="16.5" />
@@ -41,17 +41,17 @@
         <EntityTypeShape EntityType="Model1.ModalityProductiveStage" Width="2.875" PointX="39" PointY="28" />
         <AssociationConnector Association="Model1.SolicitudAsignacionAprendiz" />
         <AssociationConnector Association="Model1.SolicitudAsignacionModalidadEtapaProductiva" />
-        <AssociationConnector Association="Model1.AprendizPerson" />
-        <AssociationConnector Association="Model1.PersonInstructor" />
         <AssociationConnector Association="Model1.AprendizFicha" />
         <AssociationConnector Association="Model1.PersonSedePerson" />
         <EntityTypeShape EntityType="Model1.AsignationInstructor" Width="2.25" PointX="31.125" PointY="26.875" />
-        <AssociationConnector Association="Model1.AsignationInstructorSolicitudAsignacion" />
         <AssociationConnector Association="Model1.AsignationInstructorInstructor" />
         <AssociationConnector Association="Model1.SolicitudAsignacionEnterprise" />
         <EntityTypeShape EntityType="Model1.HumanTalent" Width="1.5" PointX="41.75" PointY="24.25" />
         <AssociationConnector Association="Model1.EnterpriseHumanTalent" />
         <AssociationConnector Association="Model1.AsignationInstructorSeguimientoVisita" />
+        <AssociationConnector Association="Model1.PersonAprendiz" />
+        <AssociationConnector Association="Model1.PersonInstructor" />
+        <AssociationConnector Association="Model1.AsignationInstructorRequestAsignation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

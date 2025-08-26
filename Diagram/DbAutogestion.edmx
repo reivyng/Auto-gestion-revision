@@ -91,14 +91,6 @@
             <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
             <End Role="ModalidadEtapaProductiva" EntitySet="ModalityProductiveStageSet" />
           </AssociationSet>
-          <AssociationSet Name="AprendizPerson" Association="Model1.AprendizPerson">
-            <End Role="Aprendiz" EntitySet="AprendizSet" />
-            <End Role="Person" EntitySet="PersonSet1" />
-          </AssociationSet>
-          <AssociationSet Name="PersonInstructor" Association="Model1.PersonInstructor">
-            <End Role="Person" EntitySet="PersonSet1" />
-            <End Role="Instructor" EntitySet="InstructorSet" />
-          </AssociationSet>
           <AssociationSet Name="AprendizFicha" Association="Model1.AprendizFicha">
             <End Role="Aprendiz" EntitySet="AprendizSet" />
             <End Role="Ficha" EntitySet="FichaSet" />
@@ -108,10 +100,6 @@
             <End Role="Person" EntitySet="PersonSet1" />
           </AssociationSet>
           <EntitySet Name="AsignationInstructorSet" EntityType="Model1.AsignationInstructor" />
-          <AssociationSet Name="AsignationInstructorSolicitudAsignacion" Association="Model1.AsignationInstructorSolicitudAsignacion">
-            <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
-            <End Role="SolicitudAsignacion" EntitySet="RequestAsignationSet" />
-          </AssociationSet>
           <AssociationSet Name="AsignationInstructorInstructor" Association="Model1.AsignationInstructorInstructor">
             <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
             <End Role="Instructor" EntitySet="InstructorSet" />
@@ -128,6 +116,18 @@
           <AssociationSet Name="AsignationInstructorSeguimientoVisita" Association="Model1.AsignationInstructorSeguimientoVisita">
             <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
             <End Role="SeguimientoVisita" EntitySet="VisitFollowingSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonAprendiz" Association="Model1.PersonAprendiz">
+            <End Role="Person" EntitySet="PersonSet1" />
+            <End Role="Aprendiz" EntitySet="AprendizSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonInstructor" Association="Model1.PersonInstructor">
+            <End Role="Person" EntitySet="PersonSet1" />
+            <End Role="Instructor" EntitySet="InstructorSet" />
+          </AssociationSet>
+          <AssociationSet Name="AsignationInstructorRequestAsignation" Association="Model1.AsignationInstructorRequestAsignation">
+            <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
+            <End Role="RequestAsignation" EntitySet="RequestAsignationSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Form">
@@ -201,10 +201,10 @@
           <Property Name="TypeIdentification" Type="String" Nullable="false" />
           <Property Name="NumberIdentification" Type="String" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Model1.UserPerson" FromRole="Person" ToRole="User" />
-          <NavigationProperty Name="Aprendiz" Relationship="Model1.AprendizPerson" FromRole="Person" ToRole="Aprendiz" />
-          <NavigationProperty Name="Instructor" Relationship="Model1.PersonInstructor" FromRole="Person" ToRole="Instructor" />
           <NavigationProperty Name="PersonSede" Relationship="Model1.PersonSedePerson" FromRole="Person" ToRole="PersonSede" />
           <Property Name="image" Type="String" Nullable="false" />
+          <NavigationProperty Name="Aprendiz" Relationship="Model1.PersonAprendiz" FromRole="Person" ToRole="Aprendiz" />
+          <NavigationProperty Name="Instructor" Relationship="Model1.PersonInstructor" FromRole="Person" ToRole="Instructor" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -401,17 +401,16 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="SolicitudAsignacion" Relationship="Model1.SolicitudAsignacionAprendiz" FromRole="Aprendiz" ToRole="SolicitudAsignacion" />
-          <NavigationProperty Name="PersonId" Relationship="Model1.AprendizPerson" FromRole="Aprendiz" ToRole="Person" />
           <NavigationProperty Name="FichaId" Relationship="Model1.AprendizFicha" FromRole="Aprendiz" ToRole="Ficha" />
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Model1.PersonAprendiz" FromRole="Aprendiz" ToRole="Person" />
         </EntityType>
         <EntityType Name="Instructor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="PersonId" Relationship="Model1.PersonInstructor" FromRole="Instructor" ToRole="Person" />
           <Property Name="ContractType" Type="String" Nullable="false" />
           <Property Name="ContractStartDate" Type="String" Nullable="false" />
           <Property Name="ContractEndDate" Type="String" Nullable="false" />
@@ -419,6 +418,7 @@
           <Property Name="KnowledgeArea" Type="String" Nullable="false" />
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Model1.PersonInstructor" FromRole="Instructor" ToRole="Person" />
         </EntityType>
         <Association Name="CodeProgramProgram">
           <End Type="Model1.Ficha" Role="CodeProgram" Multiplicity="*" />
@@ -435,9 +435,9 @@
           <Property Name="DateStartProductionStage" Type="String" Nullable="false" />
           <Property Name="PDFRequest" Type="String" Nullable="false" />
           <Property Name="RequestState" Type="String" Nullable="false" />
-          <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="SolicitudAsignacion" ToRole="AsignationInstructor" />
           <NavigationProperty Name="EnterpriseId" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="SolicitudAsignacion" ToRole="Enterprise" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorRequestAsignation" FromRole="RequestAsignation" ToRole="AsignationInstructor" />
         </EntityType>
         <EntityType Name="VisitFollowing">
           <Key>
@@ -475,22 +475,6 @@
           <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="*" />
           <End Type="Model1.ModalityProductiveStage" Role="ModalidadEtapaProductiva" Multiplicity="1" />
         </Association>
-        <Association Name="AprendizPerson">
-          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="*" />
-          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
-        </Association>
-        <Association Name="PersonInstructor">
-          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
-          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Instructor">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="AprendizFicha">
           <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="*" />
           <End Type="Model1.Ficha" Role="Ficha" Multiplicity="1" />
@@ -505,15 +489,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DateAsignation" Type="String" Nullable="false" />
-          <NavigationProperty Name="RequestAsignationId" Relationship="Model1.AsignationInstructorSolicitudAsignacion" FromRole="AsignationInstructor" ToRole="SolicitudAsignacion" />
           <NavigationProperty Name="InstructorId" Relationship="Model1.AsignationInstructorInstructor" FromRole="AsignationInstructor" ToRole="Instructor" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
           <NavigationProperty Name="VisitFollowing" Relationship="Model1.AsignationInstructorSeguimientoVisita" FromRole="AsignationInstructor" ToRole="SeguimientoVisita" />
+          <NavigationProperty Name="RequestAsignation" Relationship="Model1.AsignationInstructorRequestAsignation" FromRole="AsignationInstructor" ToRole="RequestAsignation" />
         </EntityType>
-        <Association Name="AsignationInstructorSolicitudAsignacion">
-          <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
-          <End Type="Model1.RequestAsignation" Role="SolicitudAsignacion" Multiplicity="1" />
-        </Association>
         <Association Name="AsignationInstructorInstructor">
           <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="*" />
           <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
@@ -549,6 +529,18 @@
               <PropertyRef Name="AsignationInstructorId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="PersonAprendiz">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model1.Aprendiz" Role="Aprendiz" Multiplicity="1" />
+        </Association>
+        <Association Name="PersonInstructor">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+        </Association>
+        <Association Name="AsignationInstructorRequestAsignation">
+          <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="1" />
+          <End Type="Model1.RequestAsignation" Role="RequestAsignation" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
