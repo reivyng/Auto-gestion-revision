@@ -129,6 +129,27 @@
             <End Role="AsignationInstructor" EntitySet="AsignationInstructorSet" />
             <End Role="RequestAsignation" EntitySet="RequestAsignationSet" />
           </AssociationSet>
+          <EntitySet Name="DocumentTypeSet" EntityType="Model1.DocumentType" />
+          <AssociationSet Name="PersonDocumentType" Association="Model1.PersonDocumentType">
+            <End Role="Person" EntitySet="PersonSet1" />
+            <End Role="DocumentType" EntitySet="DocumentTypeSet" />
+          </AssociationSet>
+          <EntitySet Name="BaseColorsSet" EntityType="Model1.BaseColors" />
+          <EntitySet Name="TypeContractSet" EntityType="Model1.TypeContract" />
+          <AssociationSet Name="InstructorTypeContract" Association="Model1.InstructorTypeContract">
+            <End Role="Instructor" EntitySet="InstructorSet" />
+            <End Role="TypeContract" EntitySet="TypeContractSet" />
+          </AssociationSet>
+          <EntitySet Name="TermsCondiccionsSet" EntityType="Model1.TermsCondiccions" />
+          <EntitySet Name="LegalDocumentSet" EntityType="Model1.LegalDocument" />
+          <EntitySet Name="LegalSectionSet" EntityType="Model1.LegalSection" />
+          <EntitySet Name="TypeOfQueriesSet" EntityType="Model1.TypeOfQueries" />
+          <EntitySet Name="SupportScheduleSet" EntityType="Model1.SupportSchedule" />
+          <EntitySet Name="SupportContactSet" EntityType="Model1.SupportContact" />
+          <AssociationSet Name="LegalSectionLegalDocument" Association="Model1.LegalSectionLegalDocument">
+            <End Role="LegalSection" EntitySet="LegalSectionSet" />
+            <End Role="LegalDocument" EntitySet="LegalDocumentSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Form">
           <Key>
@@ -198,13 +219,13 @@
           <Property Name="FirstLastName" Type="String" Nullable="false" />
           <Property Name="SecondLastName" Type="String" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" />
-          <Property Name="TypeIdentification" Type="String" Nullable="false" />
           <Property Name="NumberIdentification" Type="String" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Model1.UserPerson" FromRole="Person" ToRole="User" />
           <NavigationProperty Name="PersonSede" Relationship="Model1.PersonSedePerson" FromRole="Person" ToRole="PersonSede" />
           <Property Name="image" Type="String" Nullable="false" />
           <NavigationProperty Name="Aprendiz" Relationship="Model1.PersonAprendiz" FromRole="Person" ToRole="Aprendiz" />
           <NavigationProperty Name="Instructor" Relationship="Model1.PersonInstructor" FromRole="Person" ToRole="Instructor" />
+          <NavigationProperty Name="DocumentType" Relationship="Model1.PersonDocumentType" FromRole="Person" ToRole="DocumentType" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -411,7 +432,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractType" Type="String" Nullable="false" />
           <Property Name="ContractStartDate" Type="String" Nullable="false" />
           <Property Name="ContractEndDate" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorInstructor" FromRole="Instructor" ToRole="AsignationInstructor" />
@@ -419,6 +439,7 @@
           <Property Name="Active" Type="String" Nullable="false" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Model1.PersonInstructor" FromRole="Instructor" ToRole="Person" />
+          <NavigationProperty Name="TypeContract" Relationship="Model1.InstructorTypeContract" FromRole="Instructor" ToRole="TypeContract" />
         </EntityType>
         <Association Name="CodeProgramProgram">
           <End Type="Model1.Ficha" Role="CodeProgram" Multiplicity="*" />
@@ -438,6 +459,8 @@
           <NavigationProperty Name="EnterpriseId" Relationship="Model1.SolicitudAsignacionEnterprise" FromRole="SolicitudAsignacion" ToRole="Enterprise" />
           <Property Name="DeleteAt" Type="String" Nullable="false" />
           <NavigationProperty Name="AsignationInstructor" Relationship="Model1.AsignationInstructorRequestAsignation" FromRole="RequestAsignation" ToRole="AsignationInstructor" />
+          <Property Name="DateEndProductionStage" Type="DateTime" Nullable="false" />
+          <Property Name="rejectionMessage" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="VisitFollowing">
           <Key>
@@ -541,6 +564,114 @@
         <Association Name="AsignationInstructorRequestAsignation">
           <End Type="Model1.AsignationInstructor" Role="AsignationInstructor" Multiplicity="1" />
           <End Type="Model1.RequestAsignation" Role="RequestAsignation" Multiplicity="1" />
+        </Association>
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="Acronyms" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Model1.PersonDocumentType" FromRole="DocumentType" ToRole="Person" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="PersonDocumentType">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model1.DocumentType" Role="DocumentType" Multiplicity="1" />
+        </Association>
+        <EntityType Name="BaseColors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="HexagonalValue" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeContract">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Instructor" Relationship="Model1.InstructorTypeContract" FromRole="TypeContract" ToRole="Instructor" />
+        </EntityType>
+        <Association Name="InstructorTypeContract">
+          <End Type="Model1.Instructor" Role="Instructor" Multiplicity="1" />
+          <End Type="Model1.TypeContract" Role="TypeContract" Multiplicity="1" />
+        </Association>
+        <EntityType Name="TermsCondiccions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <Property Name="LastUpdate" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LegalDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="EffectiveDate" Type="String" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <NavigationProperty Name="LegalSection" Relationship="Model1.LegalSectionLegalDocument" FromRole="LegalDocument" ToRole="LegalSection" />
+        </EntityType>
+        <EntityType Name="LegalSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentId" Type="String" Nullable="false" />
+          <Property Name="ParentId" Type="String" Nullable="false" />
+          <Property Name="Order" Type="String" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <NavigationProperty Name="LegalDocument" Relationship="Model1.LegalSectionLegalDocument" FromRole="LegalSection" ToRole="LegalDocument" />
+        </EntityType>
+        <EntityType Name="TypeOfQueries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupportSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayRange" Type="String" Nullable="false" />
+          <Property Name="Hours" Type="String" Nullable="false" />
+          <Property Name="IsClosed" Type="String" Nullable="false" />
+          <Property Name="Notes" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupportContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="Label" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="ExtraInfo" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="LegalSectionLegalDocument">
+          <End Type="Model1.LegalSection" Role="LegalSection" Multiplicity="1" />
+          <End Type="Model1.LegalDocument" Role="LegalDocument" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
